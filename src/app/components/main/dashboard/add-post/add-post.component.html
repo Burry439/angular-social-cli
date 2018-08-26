@@ -1,0 +1,47 @@
+<div class="container" *ngIf="!imageSelected">
+    <div class="row">
+      
+                <div class="col-xl-11 col-lg-11 col-md-11 col-sm-12 col-12" >
+  
+        <div class="panel panel-default">
+                <div class="panel-body">
+                  <input [(ngModel)]="post"  type="text" class="form-control" placeholder="What are you up to?">
+                </div>
+                  <div class="panel-footer">
+                    <div class="btn-group">
+                       <button (click)="addpost()" type="button" class="btn btn-success" style="margin-right:10">Post</button>
+                       <button type="button" class="btn btn-link btn-icon" (click)="uploadPicture.click()"><i class="fa fa-camera"></i></button>
+                      <!-- <button type="button" class="btn btn-link btn-icon"><i class="fa fa-map-marker"></i></button>
+                      <button type="button" class="btn btn-link btn-icon"><i class="fa fa-video-camera"></i></button> -->
+                    </div>
+                    
+                    <div class="pull-right">
+                        <input style="display: none" type="file" (change)="onPictureSelected($event)" #uploadPicture>
+
+                    </div>  
+                  </div>
+              </div>
+            </div>
+  
+    </div>
+  </div>
+
+  <div *ngIf="imageSelected" class="container">
+      <div class="row">
+          <div class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-10" >
+
+
+
+    <img src='{{tempPicture}}' aligned="center" alt="" style="min-width: 250px; min-height: 250px; max-width: 70%; max-height: 250px;" >
+    <br>
+    <div class="panel-body">
+
+    <input [(ngModel)]="imgPost" style="max-width: 70%; min-width: 250px" type="text" name="" id="" class="form-control" placeholder="say something about this picture">
+  </div>
+
+
+    <button class="btn btn-primary" (click)="uploadPicture()">Post</button>
+    <button class="btn btn-danger" (click)="cancelPictureChange()">Cancel</button>
+    </div>
+    </div>
+  </div>

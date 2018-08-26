@@ -1,0 +1,22 @@
+<div *ngIf="comment" class="actionBox">
+    <ul class="commentList">
+        <li>
+            <div class="commenterImage">
+              <img src={{comment.from.profilePic}} style="width: 40px; height: 40px;"/>
+            </div>
+         
+            <div class="commentText">
+                <p style="margin-left:20px; cursor: pointer"><small (click)=" toOtherProfile(comment.from._id)">  by:{{comment.from.firstname}} {{comment.from.lastname}} <br><span class="date sub-text">{{comment.time.month}} {{comment.time.date}} {{comment.time.year}} At: {{comment.time.hour}}:{{comment.time.minute}}</span></small></p>
+                <hr>
+                <p style="margin-left:20px;">{{comment.comment}}</p> 
+                <div *ngIf="comment.from._id == me.id" style="margin-top:20px;">
+                        <button *ngIf="!editMode" (click)="editComment()" class="btn btn-primary btn-sm" style="margin-left:10px; width:70px;">Edit</button>
+                        <button *ngIf="editMode" (click)="editComment()" class="btn btn-primary btn-sm" style="margin-left:10px; width:70px;">Cancel</button>
+                        <button *ngIf="editMode" (click)="confirmEdit()"  (click)="editComment()" class="btn btn-primary btn-sm" style="margin-left:10px; width:80px;">Comfirm</button>
+                        <button (click)="delete()" class="btn btn-danger btn-sm" style="margin-left:10px;">Delete</button>
+                        <br>
+                        <textarea [(ngModel)]="editedComment" *ngIf="editMode" name="" id="" cols="30" rows="2" placeholder="edit comment....."></textarea>
+                      </div >
+            </div>
+        </li>
+

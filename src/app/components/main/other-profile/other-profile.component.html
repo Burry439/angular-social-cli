@@ -1,0 +1,80 @@
+<p-growl></p-growl>
+
+<p-dialog  [(visible)]="display" class="img-modal" [width]='dialogImageSize'  [draggable]="false" [responsive]="true">
+    <img src='{{dialogImage}}' class="img-modal"  alt="">
+</p-dialog>
+
+
+<div *ngIf="profile">
+
+    <div class="fb-profile">
+ 
+
+
+   
+    <img (click)="showDialog(profile.wallPic)" align="left" class="fb-image-lg wallImage" style="width:100%; max-height: 300px;" src="{{profile.wallPic}}" alt="Profile image example" />
+
+
+    <img (click)="showDialog(profile.profilePic)" align="left" class="fb-image-profile thumbnail profileImage" src={{profile.profilePic}} alt="Profile image example"   />
+
+        <div class="fb-profile-text">
+            <h1>{{profile.firstname}} {{profile.lastname}}</h1>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="container addpost" *ngIf="!imageSelected" style="margin-top:150px;">
+    <div class="row">
+      
+                <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10">
+  
+        <div class="panel panel-default">
+                <div class="panel-body">
+                  <input *ngIf="profile" [(ngModel)]="post"  type="text" class="form-control" placeholder="Post something on {{profile.firstname}} {{profile.lastname}}'s wall">
+                </div>
+                  <div class="panel-footer">
+                    <div class="btn-group">
+                    <button (click)="addpost()" type="button" class="btn btn-success" style="margin-right: 10px">Post</button>
+                     <button type="button" (click)="uploadPicture.click()" class="btn btn-link btn-icon"><i class="fa fa-camera"></i></button>
+                      <!-- <button type="button" class="btn btn-link btn-icon"><i class="fa fa-map-marker"></i></button>
+                      <button type="button" class="btn btn-link btn-icon"><i class="fa fa-users"></i></button>
+                      <button type="button" class="btn btn-link btn-icon"><i class="fa fa-video-camera"></i></button> -->
+                    </div>
+                    
+                    <div class="pull-right">
+                        <input style="display: none" type="file" (change)="onPictureSelected($event)" #uploadPicture>
+
+                    </div>  
+                  </div>
+              </div>
+            </div>
+  
+    </div>
+  </div>
+
+
+
+
+
+  <div *ngIf="imageSelected">
+    <img src='{{tempPicture}}' alt="" style="width: 250px; height: 250px;">
+    <br>
+    <input [(ngModel)]="imgPost" type="text" name="" id="">
+    <button class="btn btn-primary" (click)="uploadPicture()">Post</button>
+    <button class="btn btn-info" (click)="cancelPictureChange()">Cancel</button>
+  </div>
+
+
+
+
+<div style="margin-top: 100; " class="allPosts" >
+    <h1 *ngIf="profile" align="center">{{profile.firstname}} {{profile.lastname}}'s Posts</h1>
+        <app-post class="post" *ngFor="let post of posts" (delete)="deletePost(post._id)" [time]="post.time"  [post]="post.post" [from]="post.from" [image]="post.image" [id]="post._id" [comments]="post.comments" [to]="post.to" (edit)="editPost($event, post._id)"></app-post>
+        </div>				
+					 
+						
+				 

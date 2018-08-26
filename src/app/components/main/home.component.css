@@ -1,0 +1,10 @@
+footer {
+    background-color: black;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+#justpushtobottom {
+height: 82vh;
+}

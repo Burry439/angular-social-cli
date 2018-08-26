@@ -1,0 +1,8 @@
+<p-growl></p-growl>
+
+<app-add-post></app-add-post>
+
+
+<div style="margin-top:75px; position:  absolute; margin-bottom: 200px; width: 100%">
+<app-post *ngFor="let post of posts" [comments]="post.comments" [time]="post.time" [id]="post._id" [post]="post.post" [from]="post.from" [image]="post.image" (delete)="deletePost(post._id)" [to]="post.to" (edit)="editPost($event, post._id)"></app-post>
+</div>

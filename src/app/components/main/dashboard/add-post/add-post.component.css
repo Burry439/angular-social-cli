@@ -1,0 +1,48 @@
+.container
+{
+	position: relative;
+	top:20%;
+}
+
+
+.panel {
+    -webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	margin-bottom: 30px;
+	margin-top:10px;
+}
+
+.panel.panel-default {
+	border: 1px solid #d4d4d4;
+	-webkit-box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-icon {
+	color: #484848;
+}
+
+@media only screen and (max-width: 1200px) {
+	.container{
+		left:9%;
+	 }
+	}
+
+
+	@media only screen and (max-width: 960px) {
+		.container{
+			left:7%;
+		 }
+		}
+
+
+	@media only screen and (max-width: 770px) {
+		.container{
+			left:0%;
+		 }
+		}

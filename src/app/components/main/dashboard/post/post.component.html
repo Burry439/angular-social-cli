@@ -1,0 +1,157 @@
+
+<p-dialog  [(visible)]="display" class="img-modal"  [width]='dialogImageSize' [draggable]="false" [responsive]="true">
+    <img src='{{dialogImage}}' class="img-modal"  alt="">
+</p-dialog>
+
+
+<div class="container" style="margin-bottom: 20px;">
+        <div class="row">
+            <div  class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
+                <div class="panel panel-white post panel-shadow">
+                    <div class="post-heading">
+                        <div class="pull-left image" >
+                            <img  (click)="showDialog(from.profilePic)" src={{from.profilePic}} class="img-circle avatar hoverable profilePic" alt="user profile image">
+                        </div>
+                        <div class="pull-left meta">
+                            <div class="title h5">
+                                <span class="hoverable shrink" (click)="toOtherProfile(from._id)">{{from.firstname}} {{from.lastname}}</span>
+                                <i *ngIf="to" style="margin-left:10px; margin-right:10px;" class="fa fa-arrow-right"></i>
+
+                                <span *ngIf="to" class="hoverable shrink" (click)="toOtherProfile(to._id)">   
+                                     {{to.firstname}} {{to.lastname}}</span>
+                            </div>
+                            <h6 class="text-muted time">At: {{time.month}}, {{time.date}} At {{time.hour}}:{{time.minute}}</h6>
+                        </div>
+                    </div> 
+                    <hr>
+                    <div class="post-description"> 
+                        <p class="postText"><font style="font-family: 'Raleway', sans-serif;" size="5">{{post}}</font></p>
+                        <img *ngIf="image != ''" (click)="showDialog(image)" src='{{image}}' alt="" style="width:100%; height:250px;" class="hoverable">
+
+                                <div *ngIf="from._id == me.id">
+                                <button class="btn btn-primary btn-sm" (click)="editPost()">Edit</button>
+                                <button class="btn btn-primary btn-sm"  (click)="deletePost()">Delete</button>
+                            </div>
+
+                        <div class="stats">
+                                <div *ngIf="editMode" class="panel-footer">
+                                        <div >
+                                        <label for="">Edit</label>
+                                        <input  #txt type="text" [(ngModel)]="postEdit" placeholder="Edit Post">
+                                        <button (click)="confirmEdit()" [disabled]="postEdit == ''" type="button" class="btn btn-primary btn-sm">Edit</button>
+                                        <button (click)="editMode = false" type="button" class="btn btn-primary btn-sm">Cancel</button>
+                                   </div>
+                                   </div>
+                            <button (click)="showComments = !showComments" class="btn btn-primary" style="width: 100%; margin-top: 20px;"> {{showComments ? "hide comments"  : "show comments"}} </button>
+
+                                <div *ngIf="showComments" class="panel-google-plus-textarea" style="margin-top: 20px; margin-bottom: 20px;">
+                                        <textarea [(ngModel)]="comment" rows="2" style="width: 50%;" placeholder="say something about this post......"></textarea>
+                                        <button (click)="addComment()" type="submit" class="btn btn-success " style="position: relative; bottom:15px; left: 10px; width: 100px;">Comment</button>
+                                    </div>
+            
+                                    
+                                <div *ngIf="showComments && comments.length > 0">
+                                    <app-comments *ngFor="let comment of comments" [id]="comment"></app-comments> 
+                                </div>
+<!--             
+
+
+
+                            <a href="#" class="btn btn-default stat-item">
+                                <i class="fa fa-thumbs-up icon"></i>2
+                            </a>
+                            <a href="#" class="btn btn-default stat-item">
+                                <i class="fa fa-thumbs-down icon"></i>12
+                            </a>  -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container" style="margin-bottom: 40px;">
+        <div class="row">
+            <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10">
+                <div class="[ panel panel-default ] panel-google-plus">
+                    <div *ngIf="from._id == me.id" class="dropdown">
+                        <span class="dropdown-toggle" type="button" data-toggle="dropdown">
+                            <span class="[ glyphicon glyphicon-chevron-down ]"></span>
+                        </span>
+                        <ul  class="dropdown-menu" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" (click)="editPost()">Edit</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" (click)="deletePost()">Delete</a></li>
+                        </ul>
+                    </div>
+              
+                    <div class="panel-heading">
+                        <img class="[ img-circle pull-left ]" (click)="showDialog(from.profilePic)" src={{from.profilePic}} alt="Mouse0270" style="width: 75px; height: 75px"/>
+                        <h3 ><small>from</small> <span class="linkToProfile" (click)="toOtherProfile(from._id)">{{from.firstname}} {{from.lastname}}</span> 
+                            <i *ngIf="to" style="margin-left:10px; margin-right:10px;" class="fa fa-arrow-right"></i>
+
+                           <span *ngIf="to" class="linkToProfile" (click)="toOtherProfile(to._id)">   
+                                {{to.firstname}} {{to.lastname}}</span>
+                        </h3>
+                        <h5><span>Shared publicly On</span> : <span>{{time.month}}, {{time.date}} At {{time.hour}}:{{time.minute}}</span> 
+                            
+                        </h5>
+                    </div>
+                    <img *ngIf="image != ''" (click)="showDialog(image)" src='{{image}}' alt="" style="width:100%; height:250px;">
+                    <div class="panel-body">
+                        <p>{{post}}</p>
+                    </div>
+                    <div *ngIf="editMode" class="panel-footer">
+                        <div >
+                        <label for="">Edit</label>
+                        <input  #txt type="text" [(ngModel)]="postEdit" placeholder="Edit Post">
+                        <button (click)="confirmEdit()" [disabled]="postEdit == ''" type="button" class="btn btn-primary btn-sm">Edit</button>
+                        <button (click)="editMode = false" type="button" class="btn btn-primary btn-sm">Cancel</button>
+
+                   </div>
+                    </div> 
+                    <div class="">
+                        <!-- <img class="img-circle" src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=s46" alt="User Image" /> -->
+                    
+                        <!-- <button (click)="showComments = !showComments" class="btn btn-primary" style="width: 100%; margin-top: 20px;"> {{showComments ? "hide comments" : "show comments"}}</button>
+
+                        <div class="clearfix"></div>
+
+
+                        <div *ngIf="showComments" class="panel-google-plus-textarea" style="margin-top: 20px; margin-bottom: 20px;">
+                            <textarea [(ngModel)]="comment" rows="2" style="width: 50%;" placeholder="say something about this post......"></textarea>
+                            <button (click)="addComment()" type="submit" class="btn btn-success " style="position: relative; bottom:15px; left: 10px; width: 100px;">Comment</button>
+                        </div>
+
+
+                    <div *ngIf="showComments && comments.length > 0">
+                        <app-comments *ngFor="let comment of comments" [id]="comment"></app-comments> 
+                    </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  -->
