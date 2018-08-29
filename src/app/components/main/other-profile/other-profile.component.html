@@ -59,14 +59,25 @@
 
 
 
-
-  <div *ngIf="imageSelected">
-    <img src='{{tempPicture}}' alt="" style="width: 250px; height: 250px;">
-    <br>
-    <input [(ngModel)]="imgPost" type="text" name="" id="">
-    <button class="btn btn-primary" (click)="uploadPicture()">Post</button>
-    <button class="btn btn-info" (click)="cancelPictureChange()">Cancel</button>
-  </div>
+  <div *ngIf="imageSelected" class="container" align="center" style="margin-top:100px;">
+        <div class="row">
+            <div class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-10" >
+  
+  
+  
+      <img src='{{tempPicture}}' aligned="center" alt="" style="width: 100%; height: 250px; " >
+      <br>
+      <div class="panel-body">
+  
+      <input [(ngModel)]="imgPost" style="max-width: 100%; margin-top:10px;" type="text" name="" id="" class="form-control" placeholder="say something about this picture">
+    </div>
+  
+  
+      <button class="btn btn-primary btn-block" style="width: 100%" (click)="uploadPicture()">Post</button>
+      <button class="btn btn-danger btn-block" style="width: 100%" (click)="cancelPictureChange()">Cancel</button>
+      </div>
+      </div>
+    </div>
 
 
 

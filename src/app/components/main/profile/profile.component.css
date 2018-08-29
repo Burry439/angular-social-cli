@@ -10,8 +10,16 @@
 {
     position: relative;
     bottom:20px;
-    right: 80px;
+    right: 20px;
     font-weight: bolder;
+}
+
+
+.confirmPicChange
+{
+    position: relative;
+    bottom: 0px;
+    left:80px;
 }
 
 .img-modal
@@ -119,6 +127,14 @@
 {   
 
 
+    .confirmPicChange
+{   
+  
+    top: 50px;
+    left:0px;
+}
+
+
     .changeProfilePic
     {
         top:50px;
@@ -148,17 +164,38 @@
 .fb-profile-text>h1{
     font-weight: 700;
     right: 60px;
-    font-size:20px; 
+    font-size:40px; 
 }
 
 }
 
+@media (max-width:371px)
+{
+    .fb-profile-text>h1{
+        word-wrap: break-word;
+        font-weight: 700;
+        right: 60px;
+        font-size:20px; 
+    }
+}
 
-@media (max-width:347px)
+
+
+
+
+@media (max-width:340px)
 {
     .changeWallPic
     {
         bottom:45px;
         right: 10px;
     }
+
+    .confirmPicChange
+    {   
+        margin-left: 170px;
+        position: none;
+        display: block;
+    }
+
 }

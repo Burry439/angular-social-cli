@@ -15,14 +15,14 @@
 
    
     <img  (click)="showDialog(profile.wallPic)" class="fb-image-lg wallImage"    src="{{profile.wallPic}}" alt="Profile image example"/>
-    <button *ngIf="wallImageSelected" class="btn btn-primary changeWallPic" (click)="uploadWallPicture()">Upload!</button>
-    <button *ngIf="wallImageSelected" class="btn btn-warn changeWallPic" (click)="cancelWallPictureChange()">Cancel</button>
+    <button *ngIf="wallImageSelected" class="btn btn-primary confirmPicChange" (click)="uploadWallPicture()">Upload!</button>
+    <button *ngIf="wallImageSelected" class="btn btn-warn confirmPicChange" (click)="cancelWallPictureChange()">Cancel</button>
 
 
     <img  (click)="showDialog(profile.profilePic)" align="left" class="fb-image-profile thumbnail profileImage" src={{profile.profilePic}} alt="Profile image example"  />
 
-    <button *ngIf="profileImageSelected" class="btn btn-primary changeProfilePic" (click)="uploadProfilePicture()">Upload!</button>
-    <button *ngIf="profileImageSelected" class="btn btn-warn changeProfilePic" (click)="cancelProfilePictureChange()">Cancel</button>
+    <button *ngIf="profileImageSelected" class="btn btn-primary confirmPicChange" (click)="uploadProfilePicture()">Upload!</button>
+    <button *ngIf="profileImageSelected" class="btn btn-warn confirmPicChange" (click)="cancelProfilePictureChange()">Cancel</button>
 
 
 
@@ -34,8 +34,8 @@
 
  
 
-    <button *ngIf="!profileImageSelected" (click)="profilePhotoInput.click()"   class="btn btn-primary changeProfilePic">Update</button>
-    <button  *ngIf="!wallImageSelected" (click)="wallPhotoInput.click()"  class="btn btn-info changeWallPic" >Update</button>
+    <button *ngIf="!profileImageSelected && !wallImageSelected" (click)="profilePhotoInput.click()"   class="btn btn-primary changeProfilePic">Update</button>
+    <button  *ngIf="!wallImageSelected && !profileImageSelected" (click)="wallPhotoInput.click()"  class="btn btn-info changeWallPic" >Update</button>
 
   </div>
   <div class="fb-profile-text">
@@ -54,7 +54,7 @@
 <div class="allPosts" >
     <h1 align="center">Your posts</h1>
         <app-post class="post"   *ngFor="let post of posts" (delete)="deletePost(post._id)" [time]="post.time"  [post]="post.post" [from]="post.from" [image]="post.image" [id]="post._id" [comments]="post.comments" [to]="post.to"  (edit)="editPost($event, post._id)"></app-post>
-        </div>				
+        </div>					
 					 
 						
 				 

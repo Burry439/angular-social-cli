@@ -20,7 +20,7 @@
                                 <span *ngIf="to" class="hoverable shrink" (click)="toOtherProfile(to._id)">   
                                      {{to.firstname}} {{to.lastname}}</span>
                             </div>
-                            <h6 class="text-muted time">At: {{time.month}}, {{time.date}} At {{time.hour}}:{{time.minute}}</h6>
+                            <h6 class="text-muted time">At: {{time.month}}, {{time.date}} At {{time.hour}}:<span *ngIf="time.minute < 10">0</span>{{time.minute}} </h6>
                         </div>
                     </div> 
                     <hr>
@@ -53,16 +53,6 @@
                                 <div *ngIf="showComments && comments.length > 0">
                                     <app-comments *ngFor="let comment of comments" [id]="comment"></app-comments> 
                                 </div>
-<!--             
-
-
-
-                            <a href="#" class="btn btn-default stat-item">
-                                <i class="fa fa-thumbs-up icon"></i>2
-                            </a>
-                            <a href="#" class="btn btn-default stat-item">
-                                <i class="fa fa-thumbs-down icon"></i>12
-                            </a>  -->
 
                         </div>
                     </div>

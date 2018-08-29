@@ -16,26 +16,6 @@
 <button  class="sidebar-btn "  type="text" (click)="display = true" label="Users" pButton icon="pi pi-arrow-left"  >
     <span class="glyphicon glyphicon-arrow-left"></span>
 </button>
-
-
-
-            <!-- big screens -->
-<!-- <p-scrollPanel styleClass="custom" *ngIf="innerWidth > 1080">
-    <label class="users-label" for="">Users</label>
-    <input type="text" #search placeholder="Search...." class="form-control" (keyup)="filterArray(onlineUsers,search.value)">
-
-    <hr>
-
-        <ul class="users" *ngIf="onlineUsers.length > 0">
-        <li (click)="openChat(user)" class="users" *ngFor="let user of filterArray(onlineUsers,search.value)">
-            <span *ngIf="user.online && user._id != me.id" class="online-dot"></span> 
-            <span *ngIf="!user.online && user._id != me.id" class="offline-dot"></span>
-            <span class="user" *ngIf="user._id != me.id">{{user.firstname}} {{user.lastname}} </span>
-        </li>
-    </ul>
-</p-scrollPanel>  -->
-  
-    
  
     <div style="position: fixed; bottom: 0;"  class="message-component-div" >
         <app-message *ngFor="let chat of openChats; let i = index" class="message-component" (Chatclose)="closeChat($event)" [you]="chat"></app-message>

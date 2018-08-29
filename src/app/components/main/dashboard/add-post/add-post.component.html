@@ -11,8 +11,6 @@
                     <div class="btn-group">
                        <button (click)="addpost()" type="button" class="btn btn-success" style="margin-right:10">Post</button>
                        <button type="button" class="btn btn-link btn-icon" (click)="uploadPicture.click()"><i class="fa fa-camera"></i></button>
-                      <!-- <button type="button" class="btn btn-link btn-icon"><i class="fa fa-map-marker"></i></button>
-                      <button type="button" class="btn btn-link btn-icon"><i class="fa fa-video-camera"></i></button> -->
                     </div>
                     
                     <div class="pull-right">
@@ -26,22 +24,22 @@
     </div>
   </div>
 
-  <div *ngIf="imageSelected" class="container">
+  <div *ngIf="imageSelected" class="container" align="center" style="margin-top:30px;">
       <div class="row">
           <div class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-10" >
 
 
 
-    <img src='{{tempPicture}}' aligned="center" alt="" style="min-width: 250px; min-height: 250px; max-width: 70%; max-height: 250px;" >
+    <img src='{{tempPicture}}' aligned="center" alt="" style="width: 80%; height: 250px; " >
     <br>
     <div class="panel-body">
 
-    <input [(ngModel)]="imgPost" style="max-width: 70%; min-width: 250px" type="text" name="" id="" class="form-control" placeholder="say something about this picture">
+    <input [(ngModel)]="imgPost" style="max-width: 80%; margin-top:10px;" type="text" name="" id="" class="form-control" placeholder="say something about this picture">
   </div>
 
 
-    <button class="btn btn-primary" (click)="uploadPicture()">Post</button>
-    <button class="btn btn-danger" (click)="cancelPictureChange()">Cancel</button>
+    <button class="btn btn-primary btn-block" style="width: 80%" (click)="uploadPicture()">Post</button>
+    <button class="btn btn-danger btn-block" style="width: 80%" (click)="cancelPictureChange()">Cancel</button>
     </div>
     </div>
   </div>

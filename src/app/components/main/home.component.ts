@@ -34,11 +34,10 @@ export class HomeComponent implements OnInit {
           
       this.webSocketService.socket.on('new-post', (post)=>{
 
-          console.log("messaeg inside component")
 
         if(post.from._id != this.me.id && post.to != undefined && post.to._id == this.me.id)
         { 
-          this.messageService.add({severity:'success', summary:'New Post', detail:post.from.firstname + " "+ post.from.lastname + " wrote on  your wall"});
+          this.messageService.add({severity:'success', summary:'New Post', detail:post.from.firstname + " "+ post.from.lastname + " wrote on your wall"});
           this.playSound()
         }
 
@@ -80,7 +79,7 @@ export class HomeComponent implements OnInit {
       if(id != this.me.id)
       {
           this.playSound()
-         this.messageService.add({severity:'success', summary:'Updated Profile Picture ', detail:firstname + " "+ lastname + " Updated there Profile Picture"});
+         this.messageService.add({severity:'success', summary:'Updated Profile Picture ', detail:firstname + " "+ lastname + " Updated their Profile Picture"});
       }
   
   })
@@ -89,7 +88,7 @@ export class HomeComponent implements OnInit {
     if(id != this.me.id)
     {
         this.playSound()
-       this.messageService.add({severity:'success', summary:'Updated Wall Picture ', detail:firstname + " "+ lastname + " Updated there Wall Picture"});
+       this.messageService.add({severity:'success', summary:'Updated Wall Picture ', detail:firstname + " "+ lastname + " Updated their Wall Picture"});
     }
 
 })
